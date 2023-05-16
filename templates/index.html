@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ship CRUD</title>
+</head>
+<body>
+    <h1>Ship CRUD</h1>
+    <h2>Create Ship</h2>
+    <form action="/ships" method="POST">
+        <label>Name: </label>
+        <input type="text" name="name" required><br><br>
+        <label>Length: </label>
+        <input type="text" name="length" required><br><br>
+        <label>Width: </label>
+        <input type="text" name="width" required><br><br>
+        <label>Code: </label>
+        <input type="text" name="code" required><br><br>
+        <input type="submit" value="Create Ship">
+    </form>
+    <hr>
+    <h2>Ships</h2>
+    {% if ships %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Length</th>
+                    <th>Width</th>
+                    <th>Code</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for ship in ships %}
+                    <tr>
+                        <td>{{ ship.name }}</td>
+                        <td>{{ ship.length }}</td>
+                        <td>{{ ship.width }}</td>
+                        <td>{{ ship.code }}</td>
+                        <td>
+                            <a href="/ships/{{ ship.code }}">View</a>
+                            <a href="/ships/{{ ship.code }}/edit">Edit</a>
+                            <form action="/ships/{{ ship.code }}/delete" method="POST" style="display: inline;">
+                                <input type="submit" value="Delete">
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No ships found.</p>
+    {% endif %}
+</body>
+</html>

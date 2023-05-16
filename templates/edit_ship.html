@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Ship</title>
+</head>
+<body>
+    <h1>Edit Ship</h1>
+    <form action="/ships/{{ ship.code }}" method="POST">
+        <label>Name: </label>
+        <input type="text" name="name" value="{{ ship.name }}" required><br><br>
+        <label>Length: </label>
+        <input type="text" name="length" value="{{ ship.length }}" required><br><br>
+        <label>Width: </label>
+        <input type="text" name="width" value="{{ ship.width }}" required><br><br>
+        <input type="submit" value="Update Ship">
+    </form>
+    <p><a href="/ships/{{ ship.code }}">Cancel</a></p>
+</body>
+</html>

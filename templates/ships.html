@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ships</title>
+</head>
+<body>
+    <h1>Ships</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Length</th>
+                <th>Width</th>
+                <th>Code</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for ship in ships %}
+                <tr>
+                    <td>{{ ship['name'] }}</td>
+                    <td>{{ ship['length'] }}</td>
+                    <td>{{ ship['width'] }}</td>
+                    <td>{{ ship['code'] }}</td>
+                    <td>
+                        <a href="/ships/{{ ship['code'] }}">View</a>
+                        <a href="/ships/{{ ship['code'] }}/edit">Edit</a>
+                        <form action="/ships/{{ ship['code'] }}/delete" method="POST" style="display: inline;">
+                            <input type="submit" value="Delete">
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
